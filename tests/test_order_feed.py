@@ -1,5 +1,4 @@
 import allure
-from selenium.webdriver.firefox.webdriver import WebDriver
 
 from pages.main import MainPage
 from pages.order_feed import OrderFeedPage
@@ -7,7 +6,7 @@ from pages.order_feed import OrderFeedPage
 
 class TestOrderFeed:
     @allure.title("Увеличение счетчика выполненных заказов")
-    def test_increase_completed_counter(self, authenticated: WebDriver):
+    def test_increase_completed_counter(self, authenticated):
         main = MainPage(authenticated)
         order_feed = OrderFeedPage(authenticated)
 
@@ -22,7 +21,7 @@ class TestOrderFeed:
         assert int(order_feed.get_orders_counter()) > int(orders)
 
     @allure.title("Увеличение счетчика выполненных за сегодня заказов")
-    def test_increase_completed_today_counter(self, authenticated: WebDriver):
+    def test_increase_completed_today_counter(self, authenticated):
         main = MainPage(authenticated)
         order_feed = OrderFeedPage(authenticated)
 
@@ -37,7 +36,7 @@ class TestOrderFeed:
         assert int(order_feed.get_orders_today_counter()) > int(orders)
 
     @allure.title("Появление номера заказа в разделе «В работе»")
-    def test_show_order_number(self, authenticated: WebDriver):
+    def test_show_order_number(self, authenticated):
         main = MainPage(authenticated)
         order_feed = OrderFeedPage(authenticated)
 

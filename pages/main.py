@@ -1,6 +1,8 @@
 import allure
+
+from locators.main import LocatorsMain
+from locators.order_feed import LocatorsOrderFeed
 from pages.base import BasePage
-from locators import LocatorsMain, LocatorsOrderFeed
 
 
 class MainPage(BasePage):
@@ -98,6 +100,7 @@ class MainPage(BasePage):
 
     @allure.step("Получить номер заказа")
     def _get_order_number(self):
+        self._wait_for_invisible_by_locator(LocatorsMain.ORDER_NUMBER_INCORRECT)
         self._wait_for_visible_by_locator(LocatorsMain.ORDER_NUMBER)
         element = self._driver.find_element(*LocatorsMain.ORDER_NUMBER)
         return element.text

@@ -1,8 +1,9 @@
 import allure
+
 import data
-from locators import LocatorsLogin
-from pages.base import BasePage
 import urls
+from locators.login import LocatorsLogin
+from pages.base import BasePage
 
 
 class LoginPage(BasePage):
